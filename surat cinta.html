@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Surat Cintaku Untukmu</title>
+
+<!-- Font romantik -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --rose:#e63963;
+    --rose-dark:#b3123b;
+    --ink:#2a2a2a;
+    --paper:#fff9fb;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 10% 10%, rgba(255,255,255,.7), rgba(255,255,255,0) 40%),
+      radial-gradient(circle at 90% 20%, rgba(255,255,255,.5), rgba(255,255,255,0) 40%),
+      linear-gradient(180deg,#ffe0ea,#ffd6e3 35%,#ffc2d6);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+
+  /* corak mawar samar */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop");
+    background-size:cover;
+    background-position:center;
+    filter:blur(6px) saturate(1.1) opacity(.16);
+    z-index:-2;
+  }
+  /* kelopak halus terapung */
+  .petal{
+    position:fixed; top:-10vh;
+    width:16px; height:16px;
+    border-radius:60% 40% 60% 40%;
+    background:var(--rose);
+    transform:rotate(15deg);
+    opacity:.7;
+    animation: fall linear forwards;
+  }
+  @keyframes fall{
+    0%   {transform:translateY(-10vh) translateX(0) rotate(0deg);}
+    100% {transform:translateY(120vh) translateX(var(--drift, 120px)) rotate(360deg);}
+  }
+
+  .card{
+    width:min(720px,95vw);
+    background:var(--paper);
+    border-radius:28px;
+    box-shadow: 0 20px 60px rgba(179,18,59,.25);
+    border:1px solid rgba(230,57,99,.18);
+    padding:28px 28px 22px;
+    position:relative;
+  }
+  .ribbon{
+    position:absolute; inset:auto 18px -14px 18px;
+    height:36px; border-radius:12px;
+    background:linear-gradient(90deg,var(--rose),var(--rose-dark));
+    box-shadow:0 8px 22px rgba(230,57,99,.35);
+  }
+  h1{
+    font-family:"Great Vibes", cursive;
+    font-size: clamp(40px, 6.2vw, 72px);
+    text-align:center; margin:8px 0 0;
+    color:var(--rose-dark);
+    letter-spacing:.5px;
+    text-shadow:0 2px 0 rgba(255,255,255,.6);
+  }
+  .subtitle{
+    text-align:center; margin:4px 0 18px; opacity:.85;
+    font-family:"Playfair Display", serif;
+  }
+  .letter{
+    font-family:"Playfair Display", serif;
+    font-size:clamp(16px, 2.2vw, 20px);
+    line-height:1.7;
+    background:#fff;
+    border:1px solid #ffe4ee;
+    border-radius:18px;
+    padding:20px 18px;
+  }
+  .signature{
+    margin-top:18px; text-align:right; font-style:italic;
+  }
+
+  .controls{
+    display:flex; gap:12px; justify-content:center; margin:18px 0 6px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:system-ui, sans-serif;
+    padding:10px 16px; border:none; cursor:pointer;
+    border-radius:999px; font-weight:600;
+    background:linear-gradient(90deg,var(--rose),var(--rose-dark));
+    color:#fff; box-shadow:0 8px 20px rgba(230,57,99,.35);
+    transition: transform .08s ease;
+  }
+  button:active{ transform:scale(.98); }
+  .ghost{
+    background:#fff; color:var(--rose-dark); border:1px solid #ffd1df;
+    box-shadow:none;
+  }
+
+  /* hati terapung */
+  .hearts{
+    position:fixed; inset:0; pointer-events:none;
+  }
+  .heart{
+    position:absolute; width:14px; height:14px;
+    transform:rotate(45deg);
+    animation: floatUp 6s linear infinite;
+  }
+  .heart::before,.heart::after{
+    content:""; position:absolute; inset:auto;
+    width:14px; height:14px; background:var(--rose);
+    border-radius:50%;
+  }
+  .heart::before{ left:-7px; top:0; }
+  .heart::after{ left:0; top:-7px; }
+  @keyframes floatUp{
+    from{ transform:translateY(0) rotate(45deg); opacity:.7;}
+    to  { transform:translateY(-120vh) rotate(45deg); opacity:0;}
+  }
+
+  /* responsif kecil */
+  @media (max-width:420px){
+    .letter{ padding:16px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card" id="card">
+  <h1>Untuk Kamu, Cintaku</h1>
+  <p class="subtitle">sebaris rasa yang tak pernah habis</p>
+
+  <div class="letter" id="letter">
+    <p>Sayang,</p>
+    <p>
+      Sejak hari pertama aku menatap matamu, dunia terasa lebih pelahan —
+      seolah angin belajar menyebut namamu pada setiap detik yang lewat.
+      Aku mungkin tidak pandai berkata, tapi hatiku selalu pulang kepadamu.
+    </p>
+    <p>
+      Aku ingin jadi tempat kamu berehat setelah hari yang panjang,
+      payung saat hujan, dan matahari saat pagimu sendu.
+      Jika rindu adalah bahasa, biarlah aku menulisnya pada langit
+      sehingga kamu tidak pernah lupa: aku memilihmu, berulang-ulang.
+    </p>
+    <p>
+      Pegang tanganku; kita berjalan tanpa tergesa.
+      Bila malam mendingin, aku bisikkan janji yang sama setiap hari:
+      <em>aku ada di sini, untuk menjaga bahagiamu.</em>
+    </p>
+    <p class="signature">— Aku, yang ingin jadi milikmu selamanya</p>
+  </div>
+
+  <div class="controls">
+    <button id="playBtn">▶️ Play Music</button>
+    <button class="ghost" id="pauseBtn">⏸️ Pause</button>
+    <button class="ghost" id="sparkBtn">💞 Tambah Hati</button>
+  </div>
+  <div class="ribbon"></div>
+</div>
+
+<audio id="bgm" loop>
+  <!-- GANTI sumber di bawah dengan fail MP3 anda sendiri (contoh dari Drive/hosting sendiri) -->
+  <!-- Contoh placeholder bebas hak cipta (boleh tukar): -->
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/28/audio_1b3e7d0f2a.mp3?filename=romantic-ambient-124008.mp3" type="audio/mpeg">
+  Browser anda tidak menyokong audio.
+</audio>
+
+<script>
+  // ====== Muzik ======
+  const audio = document.getElementById('bgm');
+  const playBtn = document.getElementById('playBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+
+  playBtn.addEventListener('click', async () => {
+    try {
+      await audio.play();
+      playBtn.textContent = '🎶 Playing...';
+    } catch(e){
+      alert('Tekan sekali lagi untuk benarkan audio bermain.');
+    }
+  });
+  pauseBtn.addEventListener('click', () => {
+    audio.pause();
+    playBtn.textContent = '▶️ Play Music';
+  });
+
+  // ====== Hati terapung ======
+  const hearts = document.getElementById('hearts');
+  function spawnHeart(){
+    const h = document.createElement('div');
+    h.className = 'heart';
+    const left = Math.random()*100;
+    const size = 10 + Math.random()*22;
+    const duration = 4 + Math.random()*5;
+    h.style.left = left + 'vw';
+    h.style.bottom = '-10vh';
+    h.style.width = size + 'px';
+    h.style.height = size + 'px';
+    h.style.animationDuration = duration + 's';
+    h.style.opacity = 0.55 + Math.random()*0.35;
+    hearts.appendChild(h);
+    setTimeout(()=>h.remove(), duration*1000);
+  }
+  setInterval(spawnHeart, 550);
+
+  // ====== Kelopak bunga jatuh ======
+  function spawnPetal(){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const left = Math.random()*100;
+    const drift = (Math.random()*240 - 120) + 'px';
+    const size = 10 + Math.random()*18;
+    const dur = 6 + Math.random()*6;
+    p.style.left = left + 'vw';
+    p.style.borderRadius = `${60+Math.random()*20}% ${40+Math.random()*20}% ${60+Math.random()*20}% ${40+Math.random()*20}%`;
+    p.style.width = size + 'px';
+    p.style.height = size*1.2 + 'px';
+    p.style.setProperty('--drift', drift);
+    p.style.animationDuration = dur + 's';
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(), dur*1000);
+  }
+  setInterval(spawnPetal, 700);
+
+  // butang spark
+  document.getElementById('sparkBtn').addEventListener('click', ()=>{
+    for(let i=0;i<12;i++) setTimeout(spawnHeart, i*60);
+  });
+
+  // ====== Tip: sentuh kad untuk fokus (mobile) ======
+  document.getElementById('card').addEventListener('click', ()=> {
+    document.getElementById('letter').focus?.();
+  });
+</script>
+</body>
+  </html>
